@@ -1,9 +1,11 @@
 from models.exercises import *
 
 
+# Menedżer zadań, pozwala wybierać rodzaje zadań na podstawie ich nazw
 class ExerciseManager:
-    def __init__(self, string):
+    def __init__(self, string=None):
         self.string = string
+        self.topics = ('Równanie liniowe', 'Równanie kwadratowe')
 
     @property
     def exercise_class(self):

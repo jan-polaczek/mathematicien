@@ -1,5 +1,6 @@
 
 
+# Klasa obsługująca wypisywanie równań wielomianowych
 class PolynomialEquation:
     def __init__(self, coefficients, symbols):
         self.coefficients = coefficients

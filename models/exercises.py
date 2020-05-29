@@ -24,6 +24,7 @@ class Exercise:
         return [0]
 
 
+# Równanie liniowe, losuje współczynniki liczbowe w zakresie -10; 10, wyniki mogą być ułamkami
 class LinearEquationExercise(Exercise):
     def __init__(self, randomized=True):
         super().__init__('Równanie liniowe')
@@ -39,7 +40,7 @@ class LinearEquationExercise(Exercise):
 
     @property
     def description(self):
-        return 'Rozwiąż następujące równanie liniowe: ' + self.equation.equation_string
+        return 'Rozwiąż następujące równanie liniowe:\n' + self.equation.equation_string
 
     @property
     def results(self):
@@ -51,7 +52,7 @@ class LinearEquationExercise(Exercise):
         return PolynomialEquation(self.coefficients, ('x', '', 'x', ''))
 
 
-# Równanie kwadratowe, losuje
+# Równanie kwadratowe, losuje rozwiązania całkowite z zakresu -10; 10
 class QuadraticEquationExercise(Exercise):
     def __init__(self, randomized=True):
         super().__init__('Równanie kwadratowe')
@@ -61,6 +62,8 @@ class QuadraticEquationExercise(Exercise):
 
     def randomize(self):
         a, x1, x2 = (random.randint(-max_coeff, max_coeff) for i in range(3))
+        if a == 0:
+            a = 1
         b = -a * (x1 + x2)
         c = a * x1 * x2
         a1 = random.randint(-abs(a), abs(a))
@@ -73,14 +76,15 @@ class QuadraticEquationExercise(Exercise):
 
     @property
     def description(self):
-        return 'Rozwiąż następujące równanie kwadratowe: ' + self.equation.equation_string
+        return f'Rozwiąż następujące równanie kwadratowe:\n{self.equation.equation_string}' \
+               f'\nJeśli obydwa pierwiastki wyjdą takie same, wpisz ten sam wynik dwukrotnie.'
 
     @property
     def results(self):
         a1, b1, c1, a2, b2, c2 = self.coefficients
         x1 = (b2 - b1 - ((b1 - b2) ** 2 - 4 * (a1 - a2) * (c1 - c2)) ** 0.5) / (2 * (a1 - a2))
         x2 = (b2 - b1 + ((b1 - b2) ** 2 - 4 * (a1 - a2) * (c1 - c2)) ** 0.5) / (2 * (a1 - a2))
-        return x1, x2
+        return int(x1), int(x2)
 
     @property
     def equation(self):

@@ -1,6 +1,9 @@
 import random
 
 
+# Klasa pozwalająca na wybieranie losowych rzeczowników do zadań z treścią
+# oraz odmienianie ich przez przypadki.
+# Na razie nieimplementowana.
 class NounBase:
     def __init__(self):
         self.nouns = {}
