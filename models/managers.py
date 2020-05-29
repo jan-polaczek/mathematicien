@@ -1,4 +1,4 @@
-from models.exercises import *
+from .exercises import *
 
 
 # Menedżer zadań, pozwala wybierać rodzaje zadań na podstawie ich nazw

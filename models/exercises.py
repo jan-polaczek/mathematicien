@@ -1,7 +1,7 @@
 import random
 
 from constants import eps, max_coeff
-from models.equations import PolynomialEquation
+from .equations import PolynomialEquation
 
 
 class Exercise:
