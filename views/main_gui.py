@@ -38,3 +38,6 @@ class MainWindow:
 
     def render_no_answer_warning(self):
         sg.popup_error('Nie możesz zostawić pustego pola ani stawiać spacji!')
+
+    def render_string_answer_warning(self):
+        sg.popup_error('Odpowiedź nie może zawierać liter!')

@@ -39,6 +39,8 @@ class MainGUIController:
                         self.main_window.render_wrong_answer_notification()
                 except SyntaxError:
                     self.main_window.render_no_answer_warning()
+                except (TypeError, NameError):
+                    self.main_window.render_string_answer_warning()
             elif event == 'Pokaż odpowiedź':
                 self.main_window.render_correct_answer_window(results)
             elif event == 'Inne zadanie':
